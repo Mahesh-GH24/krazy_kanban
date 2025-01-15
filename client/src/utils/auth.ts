@@ -4,7 +4,6 @@ import { jwtDecode, JwtPayload } from "jwt-decode";
 
 class AuthService {
 
-  // Not used / called anywhere
    getProfile() { 
   //   // TODO: return the decoded token ***********************************************
     return jwtDecode(this.getToken());
@@ -20,9 +19,10 @@ class AuthService {
     //return token;
 
   }
-  // Not used or called anywhere
+  
    isTokenExpired(token: string) { 
-  //   // TODO: return a value that indicates if the token is expired ***********************************************
+
+    // TODO: return a value that indicates if the token is expired ***********************************************
     try {
       const decode = jwtDecode<JwtPayload>(token);
       if(decode?.exp && decode?.exp < Date.now() / 1000) {

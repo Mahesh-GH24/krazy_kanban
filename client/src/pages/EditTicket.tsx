@@ -4,6 +4,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { retrieveTicket, updateTicket } from '../api/ticketAPI';
 import { TicketData } from '../interfaces/TicketData';
 
+import Auth from '../utils/auth';
+import LoginPage from './Login';
+
 const EditTicket = () => {
   const [ticket, setTicket] = useState<TicketData | undefined>();
 
@@ -27,6 +30,7 @@ const EditTicket = () => {
     e.preventDefault();
     if (ticket && ticket.id !== null){
       updateTicket(ticket.id, ticket);
+      console.log("Final step before navigation");
       navigate('/');
     }
     else{
@@ -43,6 +47,13 @@ const EditTicket = () => {
     const { name, value } = e.target;
     setTicket((prev) => (prev ? { ...prev, [name]: value } : undefined));
   };
+  
+  //If not valid JWT, redirect to login page
+  if (!Auth.loggedIn())
+    {
+      console.log(Auth.loggedIn);
+      return <LoginPage />;
+    }
 
   return (
     <>

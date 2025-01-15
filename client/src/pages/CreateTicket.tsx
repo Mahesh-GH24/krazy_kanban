@@ -4,7 +4,9 @@ import { createTicket } from '../api/ticketAPI';
 import { TicketData } from '../interfaces/TicketData';
 import { UserData } from '../interfaces/UserData';
 import { retrieveUsers } from '../api/userAPI';
-// import Auth from '../utils/auth';
+
+import Auth from '../utils/auth';
+import LoginPage from './Login';
 
 const CreateTicket = () => {
   const [newTicket, setNewTicket] = useState<TicketData | undefined>(
@@ -57,6 +59,13 @@ const CreateTicket = () => {
   const handleUserChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setNewTicket((prev) => (prev ? { ...prev, [name]: value } : undefined));
+  }
+
+  //If not valid JWT, redirect to login page
+  if (!Auth.loggedIn())
+  {
+    console.log(Auth.loggedIn);
+    return <LoginPage />;
   }
 
   return (
