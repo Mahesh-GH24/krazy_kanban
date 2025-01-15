@@ -16,7 +16,8 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   //check if the Authorization Header is present
   if (authHeader) {
     //Extract the token from the Authorization Header "Bearer axE...."
-    const token = authHeader.split('')[1];
+    const token = authHeader.split(' ')[1];
+
 
     //Get the secret key from the environment variables
     const secretKey = process.env.JWT_SECRET_KEY || '';

@@ -1,24 +1,39 @@
 //import { JwtPayload, jwtDecode } from 'jwt-decode';
 
+import { jwtDecode, JwtPayload } from "jwt-decode";
+
 class AuthService {
 
   // Not used / called anywhere
-  // getProfile() { 
+   getProfile() { 
   //   // TODO: return the decoded token ***********************************************
-  // }
+    return jwtDecode(this.getToken());
+  }
 
   loggedIn() {
 
     // TODO: return a value that indicates if the user is logged in
     const token = this.getToken();
-    return token;
+
+    // check to see if token is expired
+    return !!token && !this.isTokenExpired(token)
+    //return token;
 
   }
   // Not used or called anywhere
-  // isTokenExpired(token: string) { 
+   isTokenExpired(token: string) { 
   //   // TODO: return a value that indicates if the token is expired ***********************************************
+    try {
+      const decode = jwtDecode<JwtPayload>(token);
+      if(decode?.exp && decode?.exp < Date.now() / 1000) {
+        return true;
+      }
 
-  // }
+    } catch (err) {
+      return false;
+    }
+
+  }
 
   getToken(): string {
 

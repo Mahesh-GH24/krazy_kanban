@@ -9,20 +9,33 @@ const Login = () => {
     password: ''
   });
 
+  const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
+  const [error, setError] = useState<string | null>(null);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setLoginData({
       ...loginData,
       [name]: value
     });
+
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: false });
+    }
+
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError(null);
+
     try {
       const data = await login(loginData);
       Auth.login(data.token);
+
     } catch (err) {
+      setError("Login failed - Invalid Username or Password. Please try again.");
       console.error('Failed to login', err);
     }
   };
@@ -31,6 +44,7 @@ const Login = () => {
     <div className='container'>
       <form className='form' onSubmit={handleSubmit}>
         <h1>Login</h1>
+        {error && <div className="alert alert-danger">{error}</div>}
         <label >Username</label>
         <input 
           type='text'
