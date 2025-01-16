@@ -31,19 +31,19 @@
    **Screenshots**:
 
    **Home Page**
-   ![index](/src/assets/images/home.jpg)
+   ![index](client/src/assets/images/home.jpg)
 
    **Login Page**
-   ![index](/src/assets/images/login.jpg)
+   ![index](client/src/assets/images/login.jpg)
 
    **Dashboard Page**
-   ![index](/src/assets/images/dashboard.jpg)
+   ![index](client/src/assets/images/dashboard.jpg)
 
    **New Ticket Entry Page**
-   ![index](/src/assets/images/new-ticket.jpg)
+   ![index](client/src/assets/images/new-ticket.jpg)
 
    **Edit Ticket Entry Page**
-   ![index](/src/assets/images/edit-ticket.jpg)
+   ![index](client/src/assets/images/edit-ticket.jpg)
    
    
    ## Challenges
