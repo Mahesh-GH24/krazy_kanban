@@ -31,18 +31,23 @@
    **Screenshots**:
 
    **Home Page**
+
    ![index](client/src/assets/images/home.jpg)
 
    **Login Page**
+
    ![index](client/src/assets/images/login.jpg)
 
    **Dashboard Page**
+
    ![index](client/src/assets/images/dashboard.jpg)
 
    **New Ticket Entry Page**
+
    ![index](client/src/assets/images/new-ticket.jpg)
 
    **Edit Ticket Entry Page**
+   
    ![index](client/src/assets/images/edit-ticket.jpg)
    
    
